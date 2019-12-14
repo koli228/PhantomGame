@@ -73,4 +73,13 @@ func _physics_process(delta):
 	
 	on_air_time += delta
 	prev_jump_pressed = jump
+func raycast(from,to):
+	var space_state=get_world_2d().diret_spase_state
+	
+	return space_state.intersect_ray(from,to,[self])
+func mouse_action():
+	if Input.is_action_pressed("mouse_left"):
+		var mpos=get_global_mouse_position()
+		var col=raycast(self.position,mpos)
+		print(123)
 	
