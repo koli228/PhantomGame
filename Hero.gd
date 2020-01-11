@@ -1,5 +1,5 @@
 extends KinematicBody2D
-
+var block = 0
 # This demo shows how to build a kinematic controller.
 
 # Member variables
@@ -73,13 +73,39 @@ func _physics_process(delta):
 	
 	on_air_time += delta
 	prev_jump_pressed = jump
+	mouse_action()
 func raycast(from,to):
-	var space_state=get_world_2d().diret_spase_state
-	
+	var space_state=get_world_2d().direct_space_state
 	return space_state.intersect_ray(from,to,[self])
 func mouse_action():
-	if Input.is_action_pressed("mouse_left"):
+	if Input.is_action_just_pressed("mouse_left"):
 		var mpos=get_global_mouse_position()
 		var col=raycast(self.position,mpos)
-		print(123)
-	
+		if col:
+			var cell = $"../TileMap".world_to_map(col.position+col.normal)
+			$"../TileMap".set_cell(cell.x,cell.y,block)
+	if Input.is_action_just_pressed("mouse_right"):
+		var mpos=get_global_mouse_position()
+		var col=raycast(self.position,mpos)
+		if col:
+			var cell = $"../TileMap".world_to_map(col.position-col.normal)
+			$"../TileMap".set_cell(cell.x,cell.y,-1)
+
+func _on_TextureButton_pressed():
+	block = 0
+	pass # Replace with function body.
+
+
+func _on_TextureButton2_pressed():
+	block = 2
+	pass # Replace with function body.
+
+
+func _on_TextureButton3_pressed():
+	block = 3
+	pass # Replace with function body.
+
+
+func _on_TextureButton4_pressed():
+	block = 4
+	pass # Replace with function body.

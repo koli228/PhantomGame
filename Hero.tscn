@@ -1,20 +1,24 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Hero.gd" type="Script" id=1]
 [ext_resource path="res://Hero 2d.png" type="Texture" id=2]
-[ext_resource path="res://Hero 2d walk left.png" type="Texture" id=3]
-[ext_resource path="res://Hero 2d walk right.png" type="Texture" id=4]
+[ext_resource path="res://Hero 2d walk right.png" type="Texture" id=3]
+[ext_resource path="res://Hero 2d walk left.png" type="Texture" id=4]
+[ext_resource path="res://Black block.png" type="Texture" id=5]
+[ext_resource path="res://Blue Block.png" type="Texture" id=6]
+[ext_resource path="res://Green block.png" type="Texture" id=7]
+[ext_resource path="res://GreenBlack Block.png" type="Texture" id=8]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "Left",
+"name": "Right",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "Right",
+"name": "Left",
 "speed": 5.0
 } ]
 
@@ -35,3 +39,35 @@ shape = SubResource( 2 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="TextureButton" type="TextureButton" parent="Camera2D"]
+margin_left = -506.22
+margin_top = -288.043
+margin_right = -442.22
+margin_bottom = -224.043
+texture_normal = ExtResource( 5 )
+
+[node name="TextureButton2" type="TextureButton" parent="Camera2D"]
+margin_left = -407.477
+margin_top = -290.609
+margin_right = -343.477
+margin_bottom = -226.609
+texture_normal = ExtResource( 6 )
+
+[node name="TextureButton3" type="TextureButton" parent="Camera2D"]
+margin_left = -289.074
+margin_top = -293.567
+margin_right = -225.074
+margin_bottom = -229.567
+texture_normal = ExtResource( 7 )
+
+[node name="TextureButton4" type="TextureButton" parent="Camera2D"]
+margin_left = -181.0
+margin_top = -293.0
+margin_right = -117.0
+margin_bottom = -229.0
+texture_normal = ExtResource( 8 )
+[connection signal="pressed" from="Camera2D/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Camera2D/TextureButton2" to="." method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="Camera2D/TextureButton3" to="." method="_on_TextureButton3_pressed"]
+[connection signal="pressed" from="Camera2D/TextureButton4" to="." method="_on_TextureButton4_pressed"]
