@@ -107,5 +107,5 @@ func _on_TextureButton3_pressed():
 
 
 func _on_TextureButton4_pressed():
-	block = 4
+	block = 6
 	pass # Replace with function body.
