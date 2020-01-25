@@ -27,3 +27,10 @@ func _on_TextureButton3_pressed():
 func _on_TextureButton4_pressed():
 	block = 6
 	pass # Replace with function body.
+	
+
+
+func _on_TextureButton5_pressed():
+	var cells = $"../TileMap".get_used_cells()
+	print(cells)
+	pass # Replace with function body.

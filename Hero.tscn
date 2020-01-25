@@ -2,19 +2,19 @@
 
 [ext_resource path="res://Hero.gd" type="Script" id=1]
 [ext_resource path="res://Hero 2d.png" type="Texture" id=2]
-[ext_resource path="res://Hero 2d walk right.png" type="Texture" id=3]
-[ext_resource path="res://Hero 2d walk left.png" type="Texture" id=4]
+[ext_resource path="res://Hero 2d walk left.png" type="Texture" id=3]
+[ext_resource path="res://Hero 2d walk right.png" type="Texture" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
 "loop": true,
-"name": "Right",
+"name": "Left",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 2 ), ExtResource( 4 ) ],
 "loop": true,
-"name": "Left",
+"name": "Right",
 "speed": 5.0
 } ]
 
