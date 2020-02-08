@@ -5,7 +5,7 @@ var block = 0
 # Member variables
 const GRAVITY = 500.0 # pixels/second/second
 
-# Angle in degrees towards either side that the player can consider "floor"
+# Скорость, передвижение
 const FLOOR_ANGLE_TOLERANCE = 40
 const WALK_FORCE = 600
 const WALK_MIN_SPEED = 100
@@ -75,6 +75,7 @@ func _physics_process(delta):
 	prev_jump_pressed = jump
 	mouse_action()
 func raycast(from,to):
+	#удаление,добавление блоков
 	var space_state=get_world_2d().direct_space_state
 	return space_state.intersect_ray(from,to,[self])
 func mouse_action():

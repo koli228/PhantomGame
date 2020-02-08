@@ -1,6 +1,7 @@
 extends Camera2D
 var block = 0
 func _ready():
+	cells_load()
 	pass
 
 func _process(delta):
@@ -10,27 +11,54 @@ func _process(delta):
 	pass
 
 func _on_TextureButton_pressed():
+	#1-ая кнопка
 	block = 0
 	pass # Replace with function body.
 
 
 func _on_TextureButton2_pressed():
+	#2-ая кнопка
 	block = 2
 	pass # Replace with function body.
 
 
 func _on_TextureButton3_pressed():
+	#3-яя кнопка
 	block = 3
 	pass # Replace with function body.
 
 
 func _on_TextureButton4_pressed():
+	#4-ёртая кнопка
 	block = 6
 	pass # Replace with function body.
 	
 
 
 func _on_TextureButton5_pressed():
+	#5-ая кнопка
 	var cells = $"../TileMap".get_used_cells()
-	print(cells)
+	cells_save(cells)
 	pass # Replace with function body.
+
+func cells_save(cells):
+	#сохранение
+	var file = File.new()
+	file.open("res://save.dat",file.WRITE)
+	#var cells_new = []
+	#for cell in cells :
+	file.store_var(cells)
+	file.close()
+	pass
+func cells_load():
+	#загрузка
+	var file = File.new()
+	if file.file_exists("res://save.dat"):
+		file.open("res://save.dat",File.READ)
+		var cells = file.get_var()
+		file.close()
+		var tileMap = $"../TileMap"
+		tileMap.clear()
+		for cell in cells:
+			tileMap.set_cellv(cell,0)
+	pass
