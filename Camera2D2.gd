@@ -45,9 +45,10 @@ func cells_save(cells):
 	#сохранение
 	var file = File.new()
 	file.open("res://save.dat",file.WRITE)
-	#var cells_new = []
-	#for cell in cells :
-	file.store_var(cells)
+	var cells_new = []
+	for cell in cells :
+		cells_new.append(Vector3(cell.x, cell.y, $"../TileMap".get_cell(cell.x, cell.y)))
+	file.store_var(cells_new)
 	file.close()
 	pass
 func cells_load():
@@ -60,5 +61,5 @@ func cells_load():
 		var tileMap = $"../TileMap"
 		tileMap.clear()
 		for cell in cells:
-			tileMap.set_cellv(cell,0)
+			tileMap.set_cellv(Vector2(cell.x,cell.y),cell.z)
 	pass

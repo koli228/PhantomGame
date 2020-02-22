@@ -89,7 +89,7 @@ func mouse_action():
 		var mpos=get_global_mouse_position()
 		var col=raycast(self.position,mpos)
 		if col:
-			var cell = $"../TileMap".world_to_map(col.position-col.normal)
+			var cell = $"../TileMap".world_to_map(col.position-col.normal*2)
 			$"../TileMap".set_cell(cell.x,cell.y,-1)
 
 func _on_TextureButton_pressed():
