@@ -1,12 +1,14 @@
 extends KinematicBody2D
-var block = 0
-var hp = 55
+var hp = 10
 var dmg = 1
-
-const health = 55
+# This demo shows how to build a kinematic controller.
+const health = 10
 const Damage = 1
 # Member variables
 const GRAVITY = 500.0 # pixels/second/second
+
+var right = true
+
 # Скорость, передвижение
 const FLOOR_ANGLE_TOLERANCE = 40
 const WALK_FORCE = 600
@@ -18,7 +20,6 @@ const JUMP_MAX_AIRBORNE_TIME = 0.2
 
 const SLIDE_STOP_VELOCITY = 1.0 # one pixel/second
 const SLIDE_STOP_MIN_TRAVEL = 1.0 # one pixel
-
 var velocity = Vector2()
 var on_air_time = 100
 var jumping = false
@@ -30,9 +31,9 @@ func _physics_process(delta):
 	# Create forces
 	var force = Vector2(0, GRAVITY)
 	
-	var walk_left = Input.is_action_pressed("ui_left")
-	var walk_right = Input.is_action_pressed("ui_right")
-	var jump = Input.is_action_pressed("ui_up")
+	var walk_left = !right
+	var walk_right = right
+	var jump = false
 	
 	var stop = true
 	
@@ -75,40 +76,12 @@ func _physics_process(delta):
 	
 	on_air_time += delta
 	prev_jump_pressed = jump
-	mouse_action()
-func raycast(from,to):
-	#удаление,добавление блоков
-	var space_state=get_world_2d().direct_space_state
-	return space_state.intersect_ray(from,to,[self])
-func mouse_action():
-	if Input.is_action_just_pressed("mouse_left"):
-		var mpos=get_global_mouse_position()
-		var col=raycast(self.position,mpos)
-		if col:
-			var cell = $"../TileMap".world_to_map(col.position+col.normal)
-			$"../TileMap".set_cell(cell.x,cell.y,block)
-	if Input.is_action_just_pressed("mouse_right"):
-		var mpos=get_global_mouse_position()
-		var col=raycast(self.position,mpos)
-		if col:
-			var cell = $"../TileMap".world_to_map(col.position-col.normal*2)
-			$"../TileMap".set_cell(cell.x,cell.y,-1)
 
-func _on_TextureButton_pressed():
-	block = 0
-	pass # Replace with function body.
+#func _process(delta):
+#	if self.:
+#		if body.is_in_group("Player"):
+#			get_tree().change_scene()
 
 
-func _on_TextureButton2_pressed():
-	block = 2
-	pass # Replace with function body.
-
-
-func _on_TextureButton3_pressed():
-	block = 3
-	pass # Replace with function body.
-
-
-func _on_TextureButton4_pressed():
-	block = 6
-	pass # Replace with function body.
+func _on_Timer_timeout():
+	right = !right
