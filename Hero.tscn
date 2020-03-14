@@ -1,32 +1,45 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Hero.gd" type="Script" id=1]
-[ext_resource path="res://Mause.png" type="Texture" id=2]
+[ext_resource path="res://Hero ver2.png" type="Texture" id=2]
+[ext_resource path="res://Hero ver2 3.png" type="Texture" id=3]
+[ext_resource path="res://Hero var2 4.png" type="Texture" id=4]
+[ext_resource path="res://Hero ver2 2.png" type="Texture" id=5]
+[ext_resource path="res://Hero ver2 5.png" type="Texture" id=6]
+[ext_resource path="res://Hero ver2 hook.png" type="Texture" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Right",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 2 ) ],
+"frames": [ ExtResource( 2 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 6 ) ],
 "loop": true,
 "name": "Left",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "Hook",
 "speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 18.5388
-height = 10.9101
+radius = 26.0396
+height = 1.4628
 
 [node name="RigidBody2D" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 10.28, -12.0875 )
+scale = Vector2( 1.6425, 1.75547 )
 frames = SubResource( 1 )
-animation = "Right"
+animation = "Hook"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -2.21086, -1.47645 )
+position = Vector2( 11.6939, -8.4616 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 2 )

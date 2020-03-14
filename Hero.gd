@@ -29,7 +29,7 @@ var prev_jump_pressed = false
 func _physics_process(delta):
 	# Create forces
 	var force = Vector2(0, GRAVITY)
-	
+	var hook = Input.is_action_pressed("ui_select")
 	var walk_left = Input.is_action_pressed("ui_left")
 	var walk_right = Input.is_action_pressed("ui_right")
 	var jump = Input.is_action_pressed("ui_up")
@@ -39,11 +39,20 @@ func _physics_process(delta):
 	if walk_left:
 		if velocity.x <= WALK_MIN_SPEED and velocity.x > -WALK_MAX_SPEED:
 			force.x -= WALK_FORCE
+			$AnimatedSprite.playing = true
+			$AnimatedSprite.scale.x=-1.642
 			stop = false
 	elif walk_right:
 		if velocity.x >= -WALK_MIN_SPEED and velocity.x < WALK_MAX_SPEED:
 			force.x += WALK_FORCE
+			$AnimatedSprite.playing = true
+			$AnimatedSprite.scale.x=1.642
 			stop = false
+	elif hook:
+		$AnimatedSprite.play("hook")
+		
+	else:
+		$AnimatedSprite.playing = false
 	
 	if stop:
 		var vsign = sign(velocity.x)

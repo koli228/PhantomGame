@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Slime.png-b312e9c3f00893baf629940a6de3147c.stex"
+path="res://.import/Hero var2 4.png-267a572227706d5ec1d74a9e4ee42ab6.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Slime.png"
-dest_files=[ "res://.import/Slime.png-b312e9c3f00893baf629940a6de3147c.stex" ]
+source_file="res://Hero var2 4.png"
+dest_files=[ "res://.import/Hero var2 4.png-267a572227706d5ec1d74a9e4ee42ab6.stex" ]
 
 [params]
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Slime.png-b312e9c3f00893baf629940a6de3147c.stex"
+path="res://.import/Hero ver2 hook.png-705e7415d8ceb32de6c6dd3be9d31eee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Slime.png"
-dest_files=[ "res://.import/Slime.png-b312e9c3f00893baf629940a6de3147c.stex" ]
+source_file="res://Hero ver2 hook.png"
+dest_files=[ "res://.import/Hero ver2 hook.png-705e7415d8ceb32de6c6dd3be9d31eee.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
